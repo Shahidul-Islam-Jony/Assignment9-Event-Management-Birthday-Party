@@ -10,35 +10,41 @@ const auth = getAuth(app);
 const AuthProviders = ({ children }) => {
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const provider = new GoogleAuthProvider();
 
     const createUserByEmail = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const loginUserByEmail = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const googleSignIn=()=>{
-        return signInWithPopup(auth,provider);
+    const googleSignIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, provider);
     }
 
-    const logOut =()=>{
+    const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setLoading(false);
         })
 
         return () => unSubscribe();
     }, [])
 
 
-    const authInfo = { createUserByEmail, loginUserByEmail, user,googleSignIn,logOut, };
+    const authInfo = { createUserByEmail, loginUserByEmail, user, googleSignIn, logOut, loading };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

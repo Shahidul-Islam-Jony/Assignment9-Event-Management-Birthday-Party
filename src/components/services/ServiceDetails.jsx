@@ -7,7 +7,6 @@ const ServiceDetails = () => {
     const services = useLoaderData();
     // console.log(services);
 
-
     let service = {};
 
     if(services){

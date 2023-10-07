@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useContext } from "react";
 import { toast, ToastContainer } from 'react-toastify';
@@ -10,6 +10,10 @@ const Login = () => {
 
     const { loginUserByEmail,googleSignIn } = useContext(AuthContext);
     // console.log(user);
+
+    const location = useLocation();
+    // console.log(location);
+    const navigate = useNavigate();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -25,6 +29,7 @@ const Login = () => {
                     position: toast.POSITION.TOP_CENTER,
                     theme: "colored",
                 })
+                navigate(location.state?location.state : '/');
             })
             .catch(error => {
                 console.error(error);
@@ -39,7 +44,9 @@ const Login = () => {
     // Google sign In
     const handleGoogleSignIn = () => {
         googleSignIn()
-            .then()
+            .then(()=>{
+                navigate(location.state?location.state : '/');
+            })
             .catch(error => {
                 // console.error(error);
                 toast.warn(error.message, {
