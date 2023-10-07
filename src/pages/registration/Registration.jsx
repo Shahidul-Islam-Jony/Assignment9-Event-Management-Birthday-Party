@@ -6,15 +6,17 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
 
-    const { createUserByEmail } = useContext(AuthContext);
+    const { createUserByEmail, googleSignIn,} = useContext(AuthContext);
 
     const handleRegister = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const name = form.get('name');
+        console.log(name);
         const email = form.get('email');
         // console.log(email);
-        const photoUrl = form.get('photoURL');
+        const url = form.get('photoURL');
+        console.log(url);
         const password = form.get('password');
         // console.log(password);
 
@@ -28,7 +30,7 @@ const Registration = () => {
                 position: toast.POSITION.TOP_CENTER
             })
         }
-        else if(!/[!@#$%^&*]/.test(password)){
+        else if (!/[!@#$%^&*]/.test(password)) {
             return toast.warn("Password should have special symbol", {
                 position: toast.POSITION.TOP_CENTER
             })
@@ -48,6 +50,19 @@ const Registration = () => {
                     theme: "colored",
                 })
             })
+            .catch(error => {
+                // console.error(error);
+                toast.warn(error.message, {
+                    position: toast.POSITION.TOP_CENTER,
+                    theme: "colored",
+                })
+            })
+    }
+
+    // Google sign In
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then()
             .catch(error => {
                 // console.error(error);
                 toast.warn(error.message, {
@@ -91,7 +106,7 @@ const Registration = () => {
                         </div>
                         <div>
                             <p className="text-center my-1">Or Sign Up with</p>
-                            <Link className="btn btn-outline w-full capitalize">Google</Link>
+                            <Link onClick={handleGoogleSignIn} className="btn btn-outline w-full capitalize">Google</Link>
                         </div>
                         <div className="mt-4">
                             <p>Already have an Account ? <Link to="/login" className="text-red-500 font-bold ml-3">Login</Link></p>

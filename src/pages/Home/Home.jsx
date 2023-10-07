@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="mt-7">
             <Slider></Slider>
-            <div className="grid grid-cols-2 mt-10 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 gap-8">
                 {
                     services?.map(service=><Services key={service.name} service={service}></Services>)
                 }

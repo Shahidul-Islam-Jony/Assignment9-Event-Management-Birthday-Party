@@ -1,7 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import '../../../src/index.css'
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
+    const { user,logOut } = useContext(AuthContext);
+    // console.log(user);
 
     const links = <div className="flex flex-col lg:flex-row gap-4  font-medium">
         <NavLink to="/">Home</NavLink>
@@ -9,6 +15,24 @@ const Navbar = () => {
         <NavLink to="about">About Us</NavLink>
         <NavLink to="order">Your Order</NavLink>
     </div>
+
+    const handleSignOut = () => {
+            logOut()
+            .then(res => {
+                console.log(res);
+                toast.warning("Logout Successful", {
+                    position: toast.POSITION.TOP_CENTER,
+                    theme: "colored",
+                })
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error("Something error", {
+                    position: toast.POSITION.TOP_CENTER,
+                    theme: "colored",
+                })
+            })
+    }
 
     return (
         <div>
@@ -33,9 +57,17 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login" className="btn btn-primary px-10">Login</Link>
+                    {
+                        user ? <div className="flex items-center gap-3">
+                            <p>{user.displayName}</p>
+                            <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="" />     {/*user image show here */}
+                            <button onClick={handleSignOut} className="btn btn-primary px-10 capitalize">Logout</button>
+                        </div> :
+                            <Link to="/login" className="btn btn-primary px-10 capitalize">Login</Link>
+                    }
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
