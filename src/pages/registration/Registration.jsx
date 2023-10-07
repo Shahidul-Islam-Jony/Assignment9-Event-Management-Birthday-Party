@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
 
-    const {createUserByEmail} = useContext(AuthContext);
+    const { createUserByEmail } = useContext(AuthContext);
 
-    const handleRegister =(e)=>{
+    const handleRegister = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const name = form.get('name');
@@ -15,19 +17,51 @@ const Registration = () => {
         const photoUrl = form.get('photoURL');
         const password = form.get('password');
         // console.log(password);
-        createUserByEmail(email,password)
-        .then(res=>{
-            console.log(res);
-            alert('Account created successfully')
-        })
-        .catch(error=>console.error(error))
+
+        if (password.length < 6) {
+            return toast.warn("Password should at least 6 characters", {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+        else if (!/[A-Z]/.test(password)) {
+            return toast.warn("Password should have capital letter", {
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
+        else if(!/[!@#$%^&*]/.test(password)){
+            return toast.warn("Password should have special symbol", {
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
+
+        // if(!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)){
+        //     return toast.warn("Password should have capital letter and special character",{
+        //         position:toast.POSITION.TOP_CENTER
+        //     })
+        // }
+
+        createUserByEmail(email, password)
+            .then(res => {
+                console.log(res);
+                toast.success("Account created successfuly", {
+                    position: toast.POSITION.TOP_CENTER,
+                    theme: "colored",
+                })
+            })
+            .catch(error => {
+                // console.error(error);
+                toast.warn(error.message, {
+                    position: toast.POSITION.TOP_CENTER,
+                    theme: "colored",
+                })
+            })
     }
 
     return (
         <div>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onClick={handleRegister} className="card-body">
+            <div className="hero min-h-screen bg-base-200 border-4">
+                <div className="card flex-shrink-0  lg:w-[500px] shadow-2xl bg-base-100">
+                    <form onSubmit={handleRegister} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
@@ -44,7 +78,7 @@ const Registration = () => {
                             <label className="label">
                                 <span className="label-text">Photo URL</span>
                             </label>
-                            <input type="email" name="photoURL" placeholder="Your Photo URL" className="input input-bordered" required />
+                            <input type="text" name="photoURL" placeholder="Your Photo URL" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -53,7 +87,7 @@ const Registration = () => {
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
                         </div>
                         <div className="form-control mt-6">
-                            <Link className="btn btn-primary capitalize">Register</Link>
+                            <button className="btn btn-primary capitalize">Register</button>
                         </div>
                         <div>
                             <p className="text-center my-1">Or Sign Up with</p>
@@ -65,6 +99,7 @@ const Registration = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

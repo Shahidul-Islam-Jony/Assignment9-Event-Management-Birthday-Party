@@ -2,6 +2,9 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { useContext } from "react";
+import { toast, ToastContainer } from 'react-toastify';
+  import "react-toastify/dist/ReactToastify.css";
+
 
 const Login = () => {
 
@@ -17,9 +20,18 @@ const Login = () => {
     loginUserByEmail(email,password)
     .then(result=>{
         console.log(result);
-        alert("Successfully logged In")
+        toast.success("Login Successful",{
+            position:toast.POSITION.TOP_CENTER,
+            theme:"colored",
+        })
     })
-    .catch(error=>console.error(error))
+    .catch(error=>{
+        console.error(error);
+        toast.warn(error.message,{
+            position:toast.POSITION.TOP_CENTER,
+            theme:"colored",
+        })
+    })
 
    }
 
@@ -56,6 +68,7 @@ const Login = () => {
                         </form>
                     </div>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };
