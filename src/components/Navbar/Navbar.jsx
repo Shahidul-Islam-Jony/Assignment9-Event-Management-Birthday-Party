@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
     const { user,logOut } = useContext(AuthContext);
-    // console.log(user);
+    console.log(user);
 
     const links = <div className="flex flex-col lg:flex-row gap-4  font-medium">
         <NavLink to="/">Home</NavLink>

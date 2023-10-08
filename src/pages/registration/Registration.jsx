@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProviders";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
@@ -7,16 +7,17 @@ import "react-toastify/dist/ReactToastify.css";
 const Registration = () => {
 
     const { createUserByEmail, googleSignIn,} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const name = form.get('name');
-        console.log(name);
+        // console.log(name);
         const email = form.get('email');
         // console.log(email);
         const url = form.get('photoURL');
-        console.log(url);
+        // console.log(url);
         const password = form.get('password');
         // console.log(password);
 
@@ -49,6 +50,7 @@ const Registration = () => {
                     position: toast.POSITION.TOP_CENTER,
                     theme: "colored",
                 })
+                navigate("/");
             })
             .catch(error => {
                 // console.error(error);
