@@ -4,9 +4,10 @@ import { AuthContext } from "../../providers/AuthProviders";
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
+
 const Registration = () => {
 
-    const { createUserByEmail, googleSignIn,} = useContext(AuthContext);
+    const { createUserByEmail, googleSignIn, update } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -50,6 +51,13 @@ const Registration = () => {
                     position: toast.POSITION.TOP_CENTER,
                     theme: "colored",
                 })
+
+                update(name, url)
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(error => console.error(error))
+
                 navigate("/");
             })
             .catch(error => {
@@ -60,6 +68,7 @@ const Registration = () => {
                 })
             })
     }
+
 
     // Google sign In
     const handleGoogleSignIn = () => {

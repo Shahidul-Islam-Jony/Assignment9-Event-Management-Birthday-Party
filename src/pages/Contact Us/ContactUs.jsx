@@ -2,8 +2,8 @@ import Footer from "../../components/footer/Footer";
 
 const ContactUs = () => {
     return (
-        <div>
-            <div className="hero min-h-screen bg-base-200">
+        <div className="my-8">
+            <div className="hero min-h-screen bg-base-200 rounded-lg mb-1">
                 <div className="hero-content flex-col lg:flex-row w-full justify-between">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Contact Information</h1>
