@@ -11,9 +11,9 @@ const Navbar = () => {
 
     const links = <div className="flex flex-col lg:flex-row gap-4  font-medium">
         <NavLink to="/">Home</NavLink>
-        <NavLink to="contact">Contact Us</NavLink>
-        <NavLink to="about">About Us</NavLink>
-        <NavLink to="order">Your Order</NavLink>
+        <NavLink to="/contact">Contact Us</NavLink>
+        <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/order">Your Order</NavLink>
     </div>
 
     const handleSignOut = () => {

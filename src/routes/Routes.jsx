@@ -7,6 +7,7 @@ import Login from "../pages/login/Login";
 import ServiceDetails from "../components/services/ServiceDetails";
 import Registration from "../pages/registration/Registration";
 import PrivateRoutes from "./PrivateRoutes";
+import YourOrder from "../pages/YourOrder/YourOrder";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
             {
                 path:'/services/:name',
                 element:<PrivateRoutes><ServiceDetails></ServiceDetails></PrivateRoutes>,
+                loader:()=>fetch('/data.json')
+            },
+            {
+                path:'/order',
+                element:<PrivateRoutes><YourOrder></YourOrder></PrivateRoutes>,
                 loader:()=>fetch('/data.json')
             }
         ]
