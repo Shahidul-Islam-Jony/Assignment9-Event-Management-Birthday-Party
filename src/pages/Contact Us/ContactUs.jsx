@@ -1,3 +1,4 @@
+import Footer from "../../components/footer/Footer";
 
 const ContactUs = () => {
     return (
@@ -48,6 +49,7 @@ const ContactUs = () => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

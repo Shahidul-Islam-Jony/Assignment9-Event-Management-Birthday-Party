@@ -7,7 +7,7 @@ import photographar from "../../assets/images/photographer2.jpg"
 
 const Slider = () => {
     return (
-        <div className="carousel w-full h-fit lg:h-[550px]">
+        <div className="carousel w-full h-fit lg:h-[550px] rounded-lg">
 
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={cake} className="w-full hero z-10 relative" />
