@@ -1,6 +1,8 @@
 
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { addToLS } from "../../localStroge/LocalStroge";
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const ServiceDetails = () => {
     const params = useParams();
@@ -21,7 +23,10 @@ const ServiceDetails = () => {
 
     const handleOrder=()=>{
         addToLS(name);
-        alert('Order sucessful');
+        toast.success("Ordered Successful", {
+            position: toast.POSITION.TOP_CENTER,
+            theme: "colored",
+        })
     }
 
     return (
@@ -35,6 +40,7 @@ const ServiceDetails = () => {
                     params.name === 'Cake and Dessert Ordering' || params.name === 'Party Supplies' ? "Order Now" : "Hire Now"
                 }
                 </Link></div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

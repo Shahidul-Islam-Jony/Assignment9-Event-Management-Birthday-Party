@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import specialCake1 from "../../assets/specialCake/specialCake.jpg"
+import specialCake2 from "../../assets/specialCake/specialCake1.jpg"
+import specialCake3 from "../../assets/specialCake/specialCake2.jpg"
+import specialCake4 from "../../assets/specialCake/specialCake4.jpg"
 
 const SpecialCake = () => {
     return (
@@ -9,16 +13,16 @@ const SpecialCake = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 mb-8 gap-4">
                 <div className="bg-base-100 h-[350px] shadow-xl" data-aos="zoom-in"  data-aos-duration="2000">
-                    <Link><img className="rounded-lg w-[400px] h-[350px]" src="/src/assets/specialCake/specialCake.jpg" /></Link>
+                    <Link><img className="rounded-lg w-[400px] h-[350px]" src={specialCake1} /></Link>
                 </div>
                 <div className=" bg-base-100 h-[350px] shadow-xl" data-aos="zoom-in"  data-aos-duration="2000">
-                    <Link><img className="rounded-lg w-[400px] h-[350px]" src="/src/assets/specialCake/specialCake1.jpg" /></Link>
+                    <Link><img className="rounded-lg w-[400px] h-[350px]" src={specialCake2} /></Link>
                 </div>
                 <div className="bg-base-100 shadow-xl" data-aos="zoom-in"  data-aos-duration="2000">
-                    <Link><img className="w-[400px] h-[350px] rounded-lg" src="/src/assets/specialCake/specialCake2.jpg" /></Link>
+                    <Link><img className="w-[400px] h-[350px] rounded-lg" src={specialCake3} /></Link>
                 </div>
                 <div className="bg-base-100 shadow-xl" data-aos="zoom-in"  data-aos-duration="2000">
-                    <Link><img className="rounded-lg w-[400px] h-[350px]" src="/src/assets/specialCake/specialCake6.jpg" /></Link>
+                    <Link><img className="rounded-lg w-[400px] h-[350px]" src={specialCake4} /></Link>
                 </div>
             </div>
         </div>

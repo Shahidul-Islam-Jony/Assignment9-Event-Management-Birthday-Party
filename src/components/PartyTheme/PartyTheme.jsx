@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import partyTheme1 from "../../assets/partyTheme/PartyTheme1.jpg"
+import partyTheme2 from "../../assets/partyTheme/partytheme2.jpg"
+import partyTheme3 from "../../assets/partyTheme/partytheme3.jpg"
+import partyTheme4 from "../../assets/partyTheme/partyTheme6.jpg"
 
 const PartyTheme = () => {
     return (
@@ -9,16 +13,16 @@ const PartyTheme = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 mb-8 gap-4">
                 <div className="bg-base-100 shadow-xl lg:w-80" data-aos="flip-left"  data-aos-duration="2000">
-                    <Link><img className="rounded-lg" src="/src/assets/partyTheme/PartyTheme1.jpg"/></Link>
+                    <Link><img className="rounded-lg" src={partyTheme1}/></Link>
                 </div>
                 <div className="bg-base-100 shadow-xl lg:w-80" data-aos="flip-right"  data-aos-duration="2000">
-                    <Link><img className="rounded-lg" src="/src/assets/partyTheme/partytheme2.jpg"/></Link>
+                    <Link><img className="rounded-lg" src={partyTheme2}/></Link>
                 </div>
                 <div className="bg-base-100 shadow-xl lg:w-80" data-aos="flip-left"  data-aos-duration="2000">
-                    <Link><img className="h-full rounded-lg" src="/src/assets/partyTheme/partytheme3.jpg"/></Link>
+                    <Link><img className="h-full rounded-lg" src={partyTheme3}/></Link>
                 </div>
                 <div className="bg-base-100 shadow-xl lg:w-80" data-aos="flip-right"  data-aos-duration="2000">
-                    <Link><img className="rounded-lg" src="/src/assets/partyTheme/partyTheme6.jpg"/></Link>
+                    <Link><img className="rounded-lg" src={partyTheme4}/></Link>
                 </div>
             </div>
         </div>

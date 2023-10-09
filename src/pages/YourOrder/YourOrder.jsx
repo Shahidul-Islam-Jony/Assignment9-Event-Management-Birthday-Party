@@ -21,7 +21,7 @@ const YourOrder = () => {
     return (
         <div>
             {
-                orderdServices.map(service => <div className="mt-8 mb-4" key={service.name}>
+                orderdServices.length != 0 ?orderdServices.map(service => <div className="mt-8 mb-4" key={service.name}>
                     <div className="card card-side bg-base-100 shadow-xl">
                         <figure><img className="w-96 h-52" src={service.image} alt={service.name} /></figure>
                         <div className="card-body">
@@ -30,7 +30,10 @@ const YourOrder = () => {
                             <p>{service.description.length > 200 && service.description.slice(0,200)}</p>
                         </div>
                     </div>
-                </div>)
+                </div>):
+                <div>
+                    <h3 className="text-3xl font-bold text-center">You have no order yet</h3>
+                </div>
             }
         </div>
     );
