@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SpecialCake = () => {
     return (
         <div className="flex flex-col lg:flex-row-reverse items-center lg:my-16 gap-8">
-            <div className="text-center my-14" data-aos="fade-left">
+            <div className="text-center my-14" data-aos="fade-down">
                 <h3 className="text-5xl font-extrabold">Special Cake</h3>
                 <h4 className="text-3xl font-bold mt-2">Choose Special Cake for birthday</h4>
             </div>

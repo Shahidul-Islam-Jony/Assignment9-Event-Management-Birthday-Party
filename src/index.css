@@ -13,3 +13,7 @@ a.active{
     font-weight: bold;
     color: green;
 }
+
+body{
+    overflow-x: hidden;
+}

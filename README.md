@@ -1,8 +1,9 @@
-# React + Vite
+## Website Name : **Happy Birthday**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# **Live Link :**
+# 5 feature of my website
+- You can fully arrenged birthday party by us
+- You can choose different designed type of cake and party Theme
+- You can hire Photographer and Videographar for your party
+- You can also hire caterar and magician
+- You can order necessary thing for birthday from our party supplies.

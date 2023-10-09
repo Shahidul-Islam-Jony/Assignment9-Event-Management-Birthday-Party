@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Registration = () => {
 
-    const { createUserByEmail, googleSignIn, update } = useContext(AuthContext);
+    const { createUserByEmail, googleSignIn, update, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRegister = (e) => {
@@ -58,7 +58,8 @@ const Registration = () => {
                     })
                     .catch(error => console.error(error))
 
-                navigate("/");
+                logOut();
+                navigate("/login");
             })
             .catch(error => {
                 // console.error(error);

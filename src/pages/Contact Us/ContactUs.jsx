@@ -12,7 +12,7 @@ const ContactUs = () => {
                         <p className="text-xl font-bold">Email: birthday@gmail.com</p>
                     </div>
 
-                    <div className="w-1/2 flex flex-col justify-end">
+                    <div className="w-full lg:w-1/2 flex flex-col justify-end">
                         <h2 className="mb-4 text-5xl font-bold">Contact Us</h2>
                         <div className="card flex-shrink-0 w-full shadow-2xl bg-base-100">
                             <form className="card-body">
